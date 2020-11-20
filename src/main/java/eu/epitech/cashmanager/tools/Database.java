@@ -2,6 +2,7 @@ package eu.epitech.cashmanager.tools;
 
 import eu.epitech.cashmanager.core.adapters.Repository;
 import eu.epitech.cashmanager.core.data.Account;
+import eu.epitech.cashmanager.core.data.PaymentMethod;
 import eu.epitech.cashmanager.core.data.Product;
 import eu.epitech.cashmanager.core.exceptions.AccountNotFoundException;
 
@@ -30,5 +31,22 @@ public class Database implements Repository {
         products.add(new Product("yi78y6u7$i45u342yt12u01", "Product 5", 69F, "https://picsum.photos/100"));
 
         return products;
+    }
+
+    @Override
+    public List<PaymentMethod> getPaymentMethods() {
+        ArrayList<PaymentMethod> paymentMethods = new ArrayList<>();
+        ArrayList<String> schema = new ArrayList<>();
+
+        schema.add("cardholder");
+        schema.add("expirationMonth");
+        schema.add("expirationYear");
+        schema.add("cardVerificationCode");
+        schema.add("code");
+
+        paymentMethods.add(new PaymentMethod("s1dQsd245q4s5d64qs6d456", "Credit card", schema));
+
+        return paymentMethods;
+
     }
 }
