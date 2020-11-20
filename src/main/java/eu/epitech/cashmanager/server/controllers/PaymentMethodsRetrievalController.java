@@ -3,27 +3,30 @@ package eu.epitech.cashmanager.server.controllers;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import eu.epitech.cashmanager.core.Core;
-import eu.epitech.cashmanager.core.usecases.retrieveproducts.ProductsRetrievalRequestModel;
-import eu.epitech.cashmanager.core.usecases.retrieveproducts.ProductsRetrievalResponseModel;
+import eu.epitech.cashmanager.core.usecases.retrievepaymentmethods.PaymentMethodsRetrievalRequestModel;
+import eu.epitech.cashmanager.core.usecases.retrievepaymentmethods.PaymentMethodsRetrievalResponseModel;
 import eu.epitech.cashmanager.server.services.CoreProvider;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class ProductRetrievalController {
+public class PaymentMethodsRetrievalController {
     private CoreProvider coreProvider;
 
-    public ProductRetrievalController(CoreProvider coreProvider) {
+    public PaymentMethodsRetrievalController(CoreProvider coreProvider) {
         this.coreProvider = coreProvider;
     }
 
-    @RequestMapping(path = "/products", method = RequestMethod.GET)
-    public ResponseEntity retrieveProducts(@RequestHeader("Authorization") String accessToken) {
+    @RequestMapping(path = "/payment-methods", method = RequestMethod.GET)
+    public ResponseEntity retrievePaymentMethods(@RequestHeader("Authorization") String accessToken) {
         try {
             Core core = coreProvider.getCore();
 
-            ProductsRetrievalResponseModel response = core.retrieveProducts(new ProductsRetrievalRequestModel(
+            PaymentMethodsRetrievalResponseModel response = core.retrievePaymentMethods(new PaymentMethodsRetrievalRequestModel(
                     accessToken.substring("Bearer ".length())
             ));
 

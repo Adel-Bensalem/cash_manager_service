@@ -6,6 +6,9 @@ import eu.epitech.cashmanager.core.adapters.TokenGenerator;
 import eu.epitech.cashmanager.core.usecases.authenticate.AuthenticationInteractor;
 import eu.epitech.cashmanager.core.usecases.authenticate.AuthenticationRequestModel;
 import eu.epitech.cashmanager.core.usecases.authenticate.AuthenticationResponseModel;
+import eu.epitech.cashmanager.core.usecases.retrievepaymentmethods.PaymentMethodsRetrievalInteractor;
+import eu.epitech.cashmanager.core.usecases.retrievepaymentmethods.PaymentMethodsRetrievalRequestModel;
+import eu.epitech.cashmanager.core.usecases.retrievepaymentmethods.PaymentMethodsRetrievalResponseModel;
 import eu.epitech.cashmanager.core.usecases.retrieveproducts.ProductsRetrievalInteractor;
 import eu.epitech.cashmanager.core.usecases.retrieveproducts.ProductsRetrievalRequestModel;
 import eu.epitech.cashmanager.core.usecases.retrieveproducts.ProductsRetrievalResponseModel;
@@ -27,5 +30,9 @@ public class CoreFacade implements Core {
 
     public ProductsRetrievalResponseModel retrieveProducts(ProductsRetrievalRequestModel requestModel) {
         return new ProductsRetrievalInteractor(repository, tokenDecoder).execute(requestModel);
+    }
+
+    public PaymentMethodsRetrievalResponseModel retrievePaymentMethods(PaymentMethodsRetrievalRequestModel requestModel) {
+        return new PaymentMethodsRetrievalInteractor(repository, tokenDecoder).execute(requestModel);
     }
 }
