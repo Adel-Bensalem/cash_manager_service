@@ -16,7 +16,6 @@ public class AuthenticationController {
         this.coreProvider = coreProvider;
     }
 
-    @ResponseBody
     @RequestMapping(path = "/", method = RequestMethod.POST)
     public ResponseEntity authenticate(@RequestBody AuthenticationRequestModel request) {
         Core core = coreProvider.getCore();
